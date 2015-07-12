@@ -12,7 +12,7 @@ def Scan(path, files, mediaList, subdirs, language=None, root=None):
   if not root:
     return
 
-  library = plistlib.readPlist(root + "/iTunes Music Library.xml")
+  library = plistlib.readPlist(root + "/iTunes/iTunes Music Library.xml")
 
   song_kinds = set([
     "AAC audio file",
@@ -43,7 +43,7 @@ def Scan(path, files, mediaList, subdirs, language=None, root=None):
       # weird, this music file must live somewhere else so we can't access it
       continue
 
-    corrected_path = root + "/iTunes Media/" + path[len(path_prefix):]
+    corrected_path = root + path[len(path_prefix):]
 
     plex_track.parts.append(corrected_path)
 
