@@ -23,7 +23,7 @@ def Scan(path, files, mediaList, subdirs, language=None, root=None):
   path_prefix = urllib.unquote(urlparse.urlparse(library["Music Folder"]).path)
 
   for track in library["Tracks"].values():
-    if not track["Kind"] in song_kinds:
+    if not track.get("Kind") in song_kinds:
       continue
 
     plex_track = Media.Track(
